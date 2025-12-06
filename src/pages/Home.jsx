@@ -39,7 +39,7 @@ export default function Home() {
 
   useEffect(() => {
     // Set SEO meta tags
-    document.title = "Apex Construction Group | Premium Roofing & Building Envelope Contractors in PA";
+    document.title = "Apex Development Group | Premium Roofing & Building Envelope Contractors in PA";
     
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
@@ -62,7 +62,7 @@ export default function Home() {
     }
 
     const ogTags = [
-      { property: "og:title", content: "Apex Construction Group | Premium Roofing Contractors in Pennsylvania" },
+      { property: "og:title", content: "Apex Development Group | Premium Roofing Contractors in Pennsylvania" },
       { property: "og:description", content: "Expert roofing and building envelope solutions in PA. Licensed, insured, and trusted. Free inspections available." },
       { property: "og:type", content: "website" },
       { property: "og:locale", content: "en_US" },
@@ -91,7 +91,7 @@ export default function Home() {
     const structuredData = {
       "@context": "https://schema.org",
       "@type": "RoofingContractor",
-      "name": "Apex Construction Group",
+      "name": "Apex Development Group",
       "image": window.location.origin + "/logo.png",
       "@id": window.location.origin,
       "url": window.location.origin,
@@ -245,7 +245,7 @@ export default function Home() {
                     Expert Roofing Services Across Pennsylvania
                   </h3>
                   <p className="mb-4">
-                    Apex Construction Group is Pennsylvania's trusted roofing contractor, serving residential and commercial properties throughout the state. Our licensed and insured team specializes in roof repair, roof replacement, emergency roofing services, and comprehensive building envelope solutions.
+                    Apex Development Group is Pennsylvania's trusted roofing contractor, serving residential and commercial properties throughout the state. Our licensed and insured team specializes in roof repair, roof replacement, emergency roofing services, and comprehensive building envelope solutions.
                   </p>
                   <p className="mb-4">
                     With years of experience serving Pittsburgh, Philadelphia, Harrisburg, and surrounding areas, we've built our reputation on quality workmanship, transparent pricing, and exceptional customer service. Whether you need a simple roof repair or a complete roofing system replacement, our expert technicians deliver results that last.
@@ -254,7 +254,7 @@ export default function Home() {
 
                 <div>
                   <h3 className="text-xl font-bold text-[#0b1d3a] mb-3">
-                    Why Choose Apex Construction Group for Your Roofing Needs?
+                    Why Choose Apex Development Group for Your Roofing Needs?
                   </h3>
                   <ul className="space-y-2">
                     <li>✓ <strong>Licensed & Insured</strong> - Fully certified Pennsylvania roofing contractors</li>

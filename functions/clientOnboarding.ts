@@ -66,7 +66,7 @@ Deno.serve(async (req) => {
       const welcomeEmail = `
 Hi ${user.full_name},
 
-Welcome to Apex Construction Group! We're thrilled to have you as a client.
+Welcome to Apex Development Group! We're thrilled to have you as a client.
 
 Your project is important to us, and we've prepared a step-by-step onboarding checklist to help you get started. You can access it anytime in your Client Portal.
 
@@ -83,15 +83,15 @@ Our team will reach out within 24 hours to schedule your initial consultation.
 In the meantime, if you have any questions, don't hesitate to reach out!
 
 Best regards,
-The Apex Construction Team
+The Apex Development Group Team
 
 Built on Trust. Rewarded by Results.
       `;
 
       await base44.asServiceRole.integrations.Core.SendEmail({
-        from_name: 'Apex Construction Group',
+        from_name: 'Apex Development Group',
         to: user_email,
-        subject: 'Welcome to Apex Construction! 🏗️',
+        subject: 'Welcome to Apex Development Group! 🏗️',
         body: welcomeEmail
       });
 
@@ -111,7 +111,7 @@ Quick reminders:
 Need help? Just reply to this email.
 
 Best,
-Apex Construction Team
+Apex Development Group Team
       `;
 
       // Note: In production, this would use a scheduled job
@@ -145,14 +145,14 @@ Your project manager has been notified and will reach out to you within 24 hours
 
 We're excited to start working on your project!
 
-Thank you for choosing Apex Construction Group.
+Thank you for choosing Apex Development Group.
 
 Best regards,
 Apex Team
         `;
 
         await base44.asServiceRole.integrations.Core.SendEmail({
-          from_name: 'Apex Construction Group',
+          from_name: 'Apex Development Group',
           to: user_email,
           subject: 'Onboarding Complete! 🎉',
           body: completionEmail

@@ -17,7 +17,7 @@ Deno.serve(async (req) => {
 
             // Use AI to categorize and determine routing
             const routingAnalysis = await base44.integrations.Core.InvokeLLM({
-                prompt: `You are an intelligent message routing system for Aegis Spec Group, a roofing and building envelope company.
+                prompt: `You are an intelligent message routing system for Apex Development Group, a roofing and building envelope company.
 
 Analyze this client message and determine:
 1. The category/topic of the message
@@ -103,7 +103,7 @@ Urgency:
             };
 
             await base44.asServiceRole.integrations.Core.SendEmail({
-                from_name: 'Aegis Message Routing System',
+                from_name: 'Apex Development Group Message Routing System',
                 to: teamEmails[routingAnalysis.assigned_team],
                 subject: `${urgencyEmojis[routingAnalysis.urgency]} New Client Message - ${routingAnalysis.category.toUpperCase()} [${routingAnalysis.urgency.toUpperCase()}]`,
                 body: `New client message requires ${routingAnalysis.assigned_team} attention:

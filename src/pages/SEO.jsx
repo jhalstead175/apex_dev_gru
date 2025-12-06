@@ -34,7 +34,7 @@ export default function SEO() {
       let schema = {};
 
       if (type === 'keywords') {
-        prompt = `You are an SEO expert for Aegis Spec Group, a roofing and building envelope company in ${location}.
+        prompt = `You are an SEO expert for Apex Development Group, a roofing and building envelope company in ${location}.
 
 Generate a comprehensive keyword strategy including:
 1. Primary keywords (high volume, high intent)
@@ -128,7 +128,7 @@ Provide:
           }
         };
       } else if (type === 'local_seo') {
-        prompt = `Generate a local SEO strategy for Aegis Spec Group, a roofing contractor in ${location}.
+        prompt = `Generate a local SEO strategy for Apex Development Group, a roofing contractor in ${location}.
 
 Provide:
 1. Google Business Profile optimization tips
@@ -171,7 +171,7 @@ Provide:
           }
         };
       } else if (type === 'blog_topics') {
-        prompt = `Generate SEO-optimized blog post topics for Aegis Spec Group, a roofing company in ${location}.
+        prompt = `Generate SEO-optimized blog post topics for Apex Development Group, a roofing company in ${location}.
 
 Focus on:
 - Educational content (how-to, guides)

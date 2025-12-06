@@ -32,7 +32,7 @@ Deno.serve(async (req) => {
             // Create message in system
             await base44.entities.Message.create({
                 project_id: projectId,
-                sender_name: 'Aegis Spec Group',
+                sender_name: 'Apex Development Group',
                 sender_email: 'notifications@aegisspecgroup.com',
                 message_text: `Great news! We've completed the "${milestone.milestone_name}" milestone for your project. ${milestone.notes || 'Our team will proceed with the next phase shortly.'}`,
                 is_from_client: false,
@@ -40,7 +40,7 @@ Deno.serve(async (req) => {
 
             // Send email notification
             await base44.integrations.Core.SendEmail({
-                from_name: 'Aegis Spec Group',
+                from_name: 'Apex Development Group',
                 to: clientEmail,
                 subject: `✅ Milestone Completed: ${milestone.milestone_name}`,
                 body: `Dear ${project.client_name},
@@ -57,7 +57,7 @@ Our team will now proceed with the next phase of your project. You can view the 
 If you have any questions, please don't hesitate to reach out through the portal messaging system or reply to this email.
 
 Best regards,
-Aegis Spec Group Team
+Apex Development Group Team
 
 ---
 View your project portal: [Client Portal Link]`
@@ -105,7 +105,7 @@ View your project portal: [Client Portal Link]`
             // Create message in system
             await base44.entities.Message.create({
                 project_id: projectId,
-                sender_name: 'Aegis Spec Group',
+                sender_name: 'Apex Development Group',
                 sender_email: 'notifications@aegisspecgroup.com',
                 message_text: `${statusEmojis[newStatus]} Project Status Update: Your project has been flagged as "${statusLabels[newStatus]}". ${reason || 'Our team is working to address this and will keep you informed of progress.'}`,
                 is_from_client: false,
@@ -127,7 +127,7 @@ View your project portal: [Client Portal Link]`
 
             // Send email notification
             await base44.integrations.Core.SendEmail({
-                from_name: 'Aegis Spec Group',
+                from_name: 'Apex Development Group',
                 to: clientEmail,
                 subject: `${statusEmojis[newStatus]} Project Status Update: ${project.project_name}`,
                 body: `Dear ${project.client_name},
@@ -152,10 +152,10 @@ Your Next Steps:
 2. Review the detailed project timeline
 3. Reach out via portal messaging with any questions or concerns
 
-We appreciate your patience and understanding as we work to deliver the quality you expect from Aegis Spec Group.
+We appreciate your patience and understanding as we work to deliver the quality you expect from Apex Development Group.
 
 Best regards,
-Aegis Spec Group Project Management Team
+Apex Development Group Project Management Team
 
 ---
 Need to discuss? Reply to this email or message us through your secure portal.`

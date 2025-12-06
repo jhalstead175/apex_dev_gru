@@ -1,10 +1,10 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
 import { createPageUrl } from "@/utils";
-import { 
-  LayoutDashboard, 
-  Calculator, 
-  Users, 
+import {
+  LayoutDashboard,
+  Calculator,
+  Users,
   FolderKanban,
   ChevronRight,
   Menu,
@@ -20,6 +20,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { base44 } from "@/api/base44Client";
 import { useQuery } from "@tanstack/react-query";
+import logo from "@/assets/apex-dev-gru-logo.png";
 
 export default function Layout({ children, currentPageName }) {
   const location = useLocation();
@@ -145,12 +146,10 @@ export default function Layout({ children, currentPageName }) {
           {/* Logo */}
           <div className="p-6 border-b border-[#1a3355]">
             <div className="flex items-center gap-3">
-              <div className="bg-gradient-to-br from-[#c8a559] to-[#d4af37] p-2 rounded-lg shadow-lg">
-                <FolderKanban className="w-6 h-6 text-white" />
-              </div>
+              <img src={logo} alt="Apex Development Group Logo" className="w-10 h-10 rounded-lg shadow-lg object-contain" />
               <div>
                 <h1 className="text-white font-bold text-lg tracking-tight">
-                  Apex Construction
+                  Apex Development Group
                 </h1>
                 <p className="text-[#c8a559] text-xs">Command Center</p>
               </div>

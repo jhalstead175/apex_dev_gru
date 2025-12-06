@@ -53,7 +53,7 @@ Deno.serve(async (req) => {
                     
                     try {
                         await base44.asServiceRole.integrations.Core.SendEmail({
-                            from_name: 'Aegis Spec Group',
+                            from_name: 'Apex Development Group',
                             to: lead.email,
                             subject: emailContent.subject,
                             body: emailContent.body
@@ -203,7 +203,7 @@ Deno.serve(async (req) => {
             const emailContent = generateFollowUpEmail(lead, followUpType || 'general_followup');
 
             await base44.asServiceRole.integrations.Core.SendEmail({
-                from_name: 'Aegis Spec Group',
+                from_name: 'Apex Development Group',
                 to: lead.email,
                 subject: emailContent.subject,
                 body: emailContent.body
@@ -240,11 +240,11 @@ function generateFollowUpEmail(lead, followUpType) {
             subject: `${lead.client_name}, Let's Discuss Your Roofing Project`,
             body: `Dear ${lead.client_name},
 
-Thank you for your interest in Aegis Spec Group! I wanted to personally reach out regarding your property at ${lead.address}.
+Thank you for your interest in Apex Development Group! I wanted to personally reach out regarding your property at ${lead.address}.
 
 We specialize in providing data-driven roofing solutions with transparent pricing and expert consultation. Our team would love to discuss your specific needs and provide you with a comprehensive assessment.
 
-Key Benefits of Working with Aegis:
+Key Benefits of Working with Apex Development Group:
 • Free professional property assessment
 • Transparent, detailed specifications
 • Insurance claim assistance
@@ -254,7 +254,7 @@ Key Benefits of Working with Aegis:
 Would you be available for a brief 15-minute call this week to discuss your project? I can answer any questions and schedule an inspection at your convenience.
 
 Best regards,
-Aegis Spec Group Sales Team
+Apex Development Group Sales Team
 
 P.S. ${lead.quote_value ? `Based on your initial inquiry, we estimate your project in the $${Math.round(lead.quote_value * 0.9).toLocaleString()} - $${Math.round(lead.quote_value * 1.1).toLocaleString()} range.` : 'We can provide a detailed quote within 24 hours of your property inspection.'}
 
@@ -288,13 +288,13 @@ Get Your Quote: [Quote Generator Link]
 Questions about the process? I'm here to help!
 
 Best regards,
-Aegis Spec Group Team
+Apex Development Group Team
 
 ---
 Call us: (555) 123-4567 | Email: sales@aegisspecgroup.com`
         },
         quote_followup: {
-            subject: `Questions About Your Aegis Quote? - ${lead.client_name}`,
+            subject: `Questions About Your Apex Development Group Quote? - ${lead.client_name}`,
             body: `Dear ${lead.client_name},
 
 I wanted to follow up on the quote we provided for your roofing project at ${lead.address}.
@@ -320,7 +320,7 @@ What would be most helpful for you right now?
 I'm here to answer any questions and help you move forward with confidence.
 
 Best regards,
-Aegis Spec Group Sales Team
+Apex Development Group Sales Team
 
 P.S. Remember, your quote is valid for 30 days, and we're currently booking projects ${getSeasonalUrgency()}.
 
@@ -354,14 +354,14 @@ What's the best way I can help you move forward? Would a brief call or in-person
 Looking forward to working with you!
 
 Best regards,
-Aegis Spec Group Team
+Apex Development Group Team
 
 ---
 Direct Line: (555) 123-4567 | Email Response Preferred
 Book a Meeting: [Calendar Link]`
         },
         general_followup: {
-            subject: `Checking In - Your Aegis Roofing Project`,
+            subject: `Checking In - Your Apex Development Group Roofing Project`,
             body: `Dear ${lead.client_name},
 
 I wanted to check in with you regarding your roofing project at ${lead.address}.
@@ -371,7 +371,7 @@ I'm here to help answer any questions or address any concerns you might have. Wh
 Is there anything I can help you with today?
 
 Best regards,
-Aegis Spec Group Team
+Apex Development Group Team
 
 ---
 Reply to this email or call (555) 123-4567`

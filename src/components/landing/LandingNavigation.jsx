@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Menu, X, Building2 } from "lucide-react";
 import { base44 } from "@/api/base44Client";
 import { useQuery } from "@tanstack/react-query";
+import logo from "@/assets/apex-dev-gru-logo.png";
 
 export default function LandingNavigation() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -34,11 +35,9 @@ export default function LandingNavigation() {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <Link to={createPageUrl("Home")} className="flex items-center gap-2">
-            <div className="bg-gradient-to-br from-[#c8a559] to-[#d4af37] p-2 rounded-lg">
-              <Building2 className="w-5 h-5 text-white" />
-            </div>
+            <img src={logo} alt="Apex Development Group Logo" className="w-10 h-10 rounded-lg object-contain bg-white p-1" />
             <span className="text-white font-bold text-lg hidden sm:block">
-              Apex Construction Group
+              Apex Development Group
             </span>
             <span className="text-white font-bold text-lg sm:hidden">
               Apex

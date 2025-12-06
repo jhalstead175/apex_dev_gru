@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { createPageUrl } from "@/utils";
 import { Building2, Mail, Phone, MapPin, Facebook, Linkedin, Instagram } from "lucide-react";
+import logo from "@/assets/apex-dev-gru-logo.png";
 
 export default function LandingFooter() {
   const currentYear = new Date().getFullYear();
@@ -13,10 +14,8 @@ export default function LandingFooter() {
           {/* Company Info */}
           <div>
             <div className="flex items-center gap-2 mb-4">
-              <div className="bg-gradient-to-br from-[#c8a559] to-[#d4af37] p-2 rounded-lg">
-                <Building2 className="w-5 h-5 text-white" />
-              </div>
-              <span className="font-bold text-lg">Apex Construction</span>
+              <img src={logo} alt="Apex Development Group Logo" className="w-10 h-10 rounded-lg object-contain bg-white p-1" />
+              <span className="font-bold text-lg">Apex Development Group</span>
             </div>
             <p className="text-slate-400 text-sm mb-4">
               Premium roofing and building envelope solutions in Pennsylvania. 
@@ -152,7 +151,7 @@ export default function LandingFooter() {
         <div className="mt-12 pt-8 border-t border-[#c8a559]/20">
           <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
             <p className="text-sm text-slate-400">
-              &copy; {currentYear} Apex Construction Group. All rights reserved.
+              &copy; {currentYear} Apex Development Group. All rights reserved.
             </p>
             <p className="text-sm text-slate-400">
               Pennsylvania Licensed Contractor | 5-Year Warranty on All Work
