@@ -35,7 +35,7 @@ export default function LandingNavigation() {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <Link to={createPageUrl("Home")} className="flex items-center gap-2">
-            <img src={logo} alt="Apex Development Group Logo" className="w-10 h-10 rounded-lg object-contain bg-white p-1" />
+            <img src={logo} alt="Apex Development Group Logo" className="w-10 h-10 rounded-lg object-contain" />
             <span className="text-white font-bold text-lg hidden sm:block">
               Apex Development Group
             </span>

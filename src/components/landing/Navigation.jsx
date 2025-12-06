@@ -35,7 +35,7 @@ export default function Navigation() {
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <div className="flex items-center gap-3">
-            <img src={logo} alt="Apex Development Group Logo" className="w-12 h-12 rounded-lg shadow-lg object-contain bg-white p-1" />
+            <img src={logo} alt="Apex Development Group Logo" className="w-12 h-12 rounded-lg shadow-lg object-contain" />
             <div>
               <h1 className="text-white font-bold text-xl tracking-tight">
                 Apex Development Group

@@ -14,7 +14,7 @@ export default function LandingFooter() {
           {/* Company Info */}
           <div>
             <div className="flex items-center gap-2 mb-4">
-              <img src={logo} alt="Apex Development Group Logo" className="w-10 h-10 rounded-lg object-contain bg-white p-1" />
+              <img src={logo} alt="Apex Development Group Logo" className="w-10 h-10 rounded-lg object-contain" />
               <span className="font-bold text-lg">Apex Development Group</span>
             </div>
             <p className="text-slate-400 text-sm mb-4">
