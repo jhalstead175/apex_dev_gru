@@ -82,7 +82,7 @@ export default function Reports() {
     mutationFn: async () => {
       const insights = await base44.integrations.Core.InvokeLLM({
         // Updated company name in prompt
-        prompt: `You are a business intelligence analyst for Apex Construction Group, a roofing and building envelope company.
+        prompt: `You are a business intelligence analyst for Apex Development Group, a roofing and building envelope company.
 
 Analyze the following business data and provide actionable insights:
 

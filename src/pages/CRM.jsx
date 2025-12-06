@@ -76,8 +76,8 @@ export default function CRM() {
       // Send welcome email
       await base44.integrations.Core.SendEmail({
         to: lead.email,
-        subject: 'Welcome to Aegis Spec Group - Project Kickoff',
-        body: `Dear ${lead.client_name},\n\nCongratulations! We're excited to begin your roofing project at ${lead.address}.\n\nOur team will be in touch shortly to schedule the project kickoff.\n\nBest regards,\nAegis Spec Group Team`
+        subject: 'Welcome to Apex Development Group - Project Kickoff',
+        body: `Dear ${lead.client_name},\n\nCongratulations! We're excited to begin your roofing project at ${lead.address}.\n\nOur team will be in touch shortly to schedule the project kickoff.\n\nBest regards,\nApex Development Group Team`
       });
     }
   };

@@ -5,7 +5,7 @@ import { Star, Quote } from "lucide-react";
 export default function Testimonials() {
   const testimonials = [
     {
-      text: "Aegis didn't just replace our roof; they managed the entire insurance process and specified a system that improved our building's energy rating. They are true consultants.",
+      text: "Apex Development Group didn't just replace our roof; they managed the entire insurance process and specified a system that improved our building's energy rating. They are true consultants.",
       author: "Michael R.",
       role: "Property Portfolio Manager",
       rating: 5,
@@ -17,7 +17,7 @@ export default function Testimonials() {
       rating: 5,
     },
     {
-      text: "As a commercial developer, I need partners who understand the technical side. Aegis brought engineering-level expertise to our building envelope remediation.",
+      text: "As a commercial developer, I need partners who understand the technical side. Apex Development Group brought engineering-level expertise to our building envelope remediation.",
       author: "James T.",
       role: "Commercial Real Estate Developer",
       rating: 5,
@@ -44,7 +44,7 @@ export default function Testimonials() {
             Trusted by Property Professionals
           </h2>
           <p className="text-xl text-gray-400">
-            See what our clients say about working with Aegis
+            See what our clients say about working with Apex Development Group
           </p>
         </div>
 

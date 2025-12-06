@@ -140,7 +140,7 @@ export default function ReferralLandingPage() {
             <div className="space-y-4">
               {[
                 "Eligible referrers: past customers & professional partners (not Apex employees)",
-                "Lead must be new to Apex Construction Group with no prior contact",
+                "Lead must be new to Apex Development Group with no prior contact",
                 "Payment issued after project completion and full payment collection",
                 "Referral must be submitted before the lead contacts us",
                 "4% commission based on final contract value",

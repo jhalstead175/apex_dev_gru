@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { createPageUrl } from "@/utils";
 import { Shield } from "lucide-react";
+import logo from "@/assets/apex-dev-gru-logo.png";
 
 export default function Navigation() {
   const [scrolled, setScrolled] = useState(false);
@@ -34,12 +35,10 @@ export default function Navigation() {
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <div className="flex items-center gap-3">
-            <div className="bg-gradient-to-br from-[#B48A3C] to-[#9a7532] p-2 rounded-lg shadow-lg">
-              <Shield className="w-7 h-7 text-white" />
-            </div>
+            <img src={logo} alt="Apex Development Group Logo" className="w-12 h-12 rounded-lg shadow-lg object-contain bg-white p-1" />
             <div>
               <h1 className="text-white font-bold text-xl tracking-tight">
-                Aegis Spec Group
+                Apex Development Group
               </h1>
               <p className="text-[#B48A3C] text-xs font-medium">
                 Building Excellence

@@ -2,6 +2,7 @@ import React from "react";
 import { Shield, MapPin, Phone, Mail, Facebook, Linkedin, Instagram } from "lucide-react";
 import { Link } from "react-router-dom";
 import { createPageUrl } from "@/utils";
+import logo from "@/assets/apex-dev-gru-logo.png";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -13,8 +14,8 @@ export default function Footer() {
           {/* Company Info */}
           <div>
             <div className="flex items-center gap-2 mb-4">
-              <Shield className="w-8 h-8 text-[#10b981]" />
-              <span className="text-xl font-bold">Aegis Spec Group</span>
+              <img src={logo} alt="Apex Development Group Logo" className="w-10 h-10 rounded-lg object-contain bg-white p-1" />
+              <span className="text-xl font-bold">Apex Development Group</span>
             </div>
             <p className="text-slate-300 text-sm mb-4">
               Pennsylvania's trusted roofing and building envelope specialists. Licensed, insured, and committed to excellence.
@@ -94,7 +95,7 @@ export default function Footer() {
         {/* Bottom Bar */}
         <div className="border-t border-white/10 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-slate-400">
-            <p>© {currentYear} Aegis Spec Group. All rights reserved. Licensed & Insured PA Roofing Contractor.</p>
+            <p>© {currentYear} Apex Development Group. All rights reserved. Licensed & Insured PA Roofing Contractor.</p>
             <div className="flex gap-6">
               <Link to={createPageUrl("ClientPortal")} className="hover:text-[#10b981] transition-colors">
                 Client Portal

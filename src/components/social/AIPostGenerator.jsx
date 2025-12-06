@@ -13,7 +13,7 @@ export default function AIPostGenerator({ onIdeasGenerated }) {
     setIsGenerating(true);
     try {
       const result = await base44.integrations.Core.InvokeLLM({
-        prompt: `Generate 5 engaging social media post ideas for a professional roofing contractor business (Aegis Spec Group) located in Pennsylvania. 
+        prompt: `Generate 5 engaging social media post ideas for a professional roofing contractor business (Apex Development Group) located in Pennsylvania. 
         
         Requirements:
         - Mix of content types: educational tips, seasonal advice, project showcases, client testimonials prompts, and industry expertise

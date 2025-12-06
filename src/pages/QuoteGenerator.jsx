@@ -89,7 +89,7 @@ Location: Pennsylvania (use PA market rates for labor and materials)
 
       // Use AI to analyze and generate quote
       const aiResponse = await base44.integrations.Core.InvokeLLM({
-        prompt: `You are a roofing estimation expert for Aegis Spec Group, a premium building envelope company in Pennsylvania.
+        prompt: `You are a roofing estimation expert for Apex Development Group, a premium building envelope company in Pennsylvania.
 
 ${projectContext}
 
