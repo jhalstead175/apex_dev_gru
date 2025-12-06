@@ -40,7 +40,7 @@ export default function Hero() {
             </h1>
 
             <p className="text-xl text-gray-300 leading-relaxed">
-              Aegis Spec Group leverages data-driven analysis and expert
+              Apex Development Group leverages data-driven analysis and expert
               consultation to protect your most valuable asset.
             </p>
 

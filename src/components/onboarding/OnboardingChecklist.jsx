@@ -108,7 +108,7 @@ export default function OnboardingChecklist({ user }) {
             </div>
             <div>
               <CardTitle className="text-xl font-bold text-[#0b1d3a]">
-                Welcome to Apex Construction!
+                Welcome to Apex Development Group!
               </CardTitle>
               <p className="text-sm text-slate-600 mt-1">
                 Complete these steps to get started with your project

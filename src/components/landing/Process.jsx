@@ -46,7 +46,7 @@ export default function Process() {
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-4xl lg:text-5xl font-bold text-[#0A1A3A] mb-4">
-            The Aegis Standard
+            The Apex Development Group Standard
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
             Our proven process ensures excellence at every stage
