@@ -4,13 +4,16 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Card, CardContent } from "@/components/ui/card";
-import { ArrowRight, ArrowLeft, CheckCircle2, Home, Phone, Mail, Calendar, AlertCircle } from "lucide-react";
+import { ArrowRight, ArrowLeft, CheckCircle2, Home, Phone, Mail, Calendar, AlertCircle, Loader2 } from "lucide-react";
 import { Link } from "react-router-dom";
 import { createPageUrl } from "@/utils";
 import logo from "@/assets/apex-dev-gru-logo.png";
+import { supabase, isSupabaseConfigured } from "@/lib/supabaseClient";
+import { toast } from "sonner";
 
 export default function LeadGenPage() {
   const [step, setStep] = useState(1);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
     // Step 1: Contact Info
     fullName: "",
@@ -77,20 +80,81 @@ export default function LeadGenPage() {
     if (formData.hasBudget === "yes") score += 10;
     else if (formData.hasBudget === "no") score += 5;
 
-    setLeadScore(score);
-
     // Determine tier
-    if (score >= 80) setLeadTier("HOT");
-    else if (score >= 60) setLeadTier("WARM");
-    else if (score >= 40) setLeadTier("QUALIFIED");
-    else setLeadTier("PROSPECT");
+    let tier = "PROSPECT";
+    if (score >= 80) tier = "HOT";
+    else if (score >= 60) tier = "WARM";
+    else if (score >= 40) tier = "QUALIFIED";
+
+    return { score, tier };
   };
 
-  const handleNextStep = () => {
+  const saveLeadToSupabase = async (score, tier) => {
+    if (!isSupabaseConfigured()) {
+      console.warn("Supabase not configured. Lead data:", { ...formData, score, tier });
+      toast.warning("Lead saved locally. Configure Supabase to save to database.");
+      return { success: true, localOnly: true };
+    }
+
+    try {
+      // Get UTM parameters from URL if available
+      const urlParams = new URLSearchParams(window.location.search);
+
+      const leadData = {
+        full_name: formData.fullName,
+        phone: formData.phone,
+        email: formData.email,
+        address: formData.address,
+        property_type: formData.propertyType,
+        roof_age: formData.roofAge,
+        roof_condition: formData.roofCondition,
+        visible_damage: formData.visibleDamage,
+        recent_storm: formData.recentStorm,
+        active_leaks: formData.activeLeaks,
+        timeline: formData.timeline,
+        has_quotes: formData.hasQuotes,
+        has_budget: formData.hasBudget,
+        lead_score: score,
+        lead_tier: tier,
+        status: 'new',
+        source: 'website',
+        utm_source: urlParams.get('utm_source'),
+        utm_medium: urlParams.get('utm_medium'),
+        utm_campaign: urlParams.get('utm_campaign'),
+        referrer: document.referrer || null,
+      };
+
+      const { data, error } = await supabase
+        .from('leads')
+        .insert([leadData])
+        .select();
+
+      if (error) {
+        console.error('Supabase error:', error);
+        toast.error("Failed to save lead. Please try again.");
+        return { success: false, error };
+      }
+
+      toast.success("Lead submitted successfully!");
+
+      // If it's a HOT lead, show extra notification
+      if (tier === "HOT") {
+        toast.success("🔥 Priority lead! Our team will contact you within 24 hours.");
+      }
+
+      return { success: true, data };
+    } catch (error) {
+      console.error('Error saving lead:', error);
+      toast.error("An error occurred. Please try again.");
+      return { success: false, error };
+    }
+  };
+
+  const handleNextStep = async () => {
     if (step === 1) {
       // Validate step 1
       if (!formData.fullName || !formData.phone || !formData.email || !formData.address) {
-        alert("Please fill in all contact information.");
+        toast.error("Please fill in all contact information.");
         return;
       }
       setStep(2);
@@ -99,11 +163,25 @@ export default function LeadGenPage() {
       if (!formData.propertyType || !formData.roofAge || !formData.roofCondition ||
           !formData.visibleDamage || !formData.recentStorm || !formData.activeLeaks ||
           !formData.timeline || !formData.hasQuotes || !formData.hasBudget) {
-        alert("Please answer all questions.");
+        toast.error("Please answer all questions.");
         return;
       }
-      calculateLeadScore();
+
+      setIsSubmitting(true);
+
+      // Calculate score
+      const { score, tier } = calculateLeadScore();
+      setLeadScore(score);
+      setLeadTier(tier);
+
+      // Save to Supabase
+      await saveLeadToSupabase(score, tier);
+
+      setIsSubmitting(false);
       setStep(3);
+
+      // Scroll to top to show results
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   };
 
@@ -606,9 +684,19 @@ export default function LeadGenPage() {
                   <Button
                     onClick={handleNextStep}
                     className="bg-[#B48A3C] hover:bg-[#9a7532] text-white font-bold ml-auto"
+                    disabled={isSubmitting}
                   >
-                    {step === 1 ? 'Continue' : 'Get My Results'}
-                    <ArrowRight className="w-4 h-4 ml-2" />
+                    {isSubmitting ? (
+                      <>
+                        <Loader2 className="w-4 h-4 mr-2 animate-spin" />
+                        Submitting...
+                      </>
+                    ) : (
+                      <>
+                        {step === 1 ? 'Continue' : 'Get My Results'}
+                        <ArrowRight className="w-4 h-4 ml-2" />
+                      </>
+                    )}
                   </Button>
                 </div>
               )}

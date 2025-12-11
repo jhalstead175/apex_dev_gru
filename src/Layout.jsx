@@ -15,7 +15,8 @@ import {
   Search,
   LogOut,
   Bot,
-  Gift
+  Gift,
+  ClipboardList
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { base44 } from "@/api/base44Client";
@@ -57,6 +58,12 @@ export default function Layout({ children, currentPageName }) {
       title: "CRM Pipeline",
       url: createPageUrl("CRM"),
       icon: Users,
+      roles: ["owner", "manager"]
+    },
+    {
+      title: "Roofing Leads",
+      url: createPageUrl("RoofingLeadsDashboard"),
+      icon: ClipboardList,
       roles: ["owner", "manager"]
     },
     {
