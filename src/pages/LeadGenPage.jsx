@@ -10,6 +10,18 @@ import { createPageUrl } from "@/utils";
 import logo from "@/assets/apex-dev-gru-logo.png";
 import { supabase, isSupabaseConfigured } from "@/lib/supabaseClient";
 import { toast } from "sonner";
+import {
+  sendLeadNotificationEmail,
+  sendLeadNotificationSMS,
+  sendWelcomeEmail,
+  scheduleFollowUpSequence,
+} from "@/lib/notifications";
+import {
+  trackLeadSubmission,
+  trackFacebookLead,
+  trackFormStep,
+  trackCalendarBooking,
+} from "@/lib/analytics";
 
 export default function LeadGenPage() {
   const [step, setStep] = useState(1);
@@ -142,6 +154,34 @@ export default function LeadGenPage() {
         toast.success("🔥 Priority lead! Our team will contact you within 24 hours.");
       }
 
+      // Send notifications (don't block on these)
+      const leadWithData = { ...leadData, id: data[0]?.id };
+
+      // Send internal notifications
+      sendLeadNotificationEmail(leadWithData).catch(err =>
+        console.warn('Email notification failed:', err)
+      );
+
+      if (tier === "HOT") {
+        sendLeadNotificationSMS(leadWithData).catch(err =>
+          console.warn('SMS notification failed:', err)
+        );
+      }
+
+      // Send welcome email to customer
+      sendWelcomeEmail(leadWithData).catch(err =>
+        console.warn('Welcome email failed:', err)
+      );
+
+      // Schedule follow-up sequence
+      scheduleFollowUpSequence(leadWithData).catch(err =>
+        console.warn('Follow-up sequence failed:', err)
+      );
+
+      // Track conversion in analytics
+      trackLeadSubmission(leadWithData);
+      trackFacebookLead(leadWithData);
+
       return { success: true, data };
     } catch (error) {
       console.error('Error saving lead:', error);
@@ -158,6 +198,7 @@ export default function LeadGenPage() {
         return;
       }
       setStep(2);
+      trackFormStep(2);
     } else if (step === 2) {
       // Validate step 2
       if (!formData.propertyType || !formData.roofAge || !formData.roofCondition ||
@@ -653,6 +694,29 @@ export default function LeadGenPage() {
                       <li>We'll provide a detailed, no-obligation quote</li>
                       <li>You'll receive expert recommendations for your specific needs</li>
                     </ul>
+                  </div>
+
+                  {/* Calendar Booking */}
+                  <div className="bg-gradient-to-r from-[#B48A3C] to-[#9a7532] rounded-lg p-6 text-white text-center">
+                    <Calendar className="w-12 h-12 mx-auto mb-3" />
+                    <h3 className="font-bold text-2xl mb-2">Want to Schedule Your Inspection Now?</h3>
+                    <p className="mb-4 text-white/90">
+                      Skip the wait! Book your free roof inspection directly on our calendar.
+                    </p>
+                    <Button
+                      onClick={() => {
+                        // Track calendar booking
+                        trackCalendarBooking();
+
+                        // Open Calendly popup
+                        const calendlyUrl = import.meta.env.VITE_CALENDLY_URL || 'https://calendly.com/apexdevelopmentgroup';
+                        window.open(calendlyUrl, '_blank', 'width=800,height=800');
+                      }}
+                      className="bg-white text-[#0A1A3A] hover:bg-gray-100 font-bold text-lg px-8 py-3"
+                    >
+                      <Calendar className="w-5 h-5 mr-2" />
+                      Schedule Free Inspection
+                    </Button>
                   </div>
 
                   <div className="text-center pt-4">
