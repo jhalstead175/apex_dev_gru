@@ -15,7 +15,8 @@ import {
   Search,
   LogOut,
   Bot,
-  Gift
+  Gift,
+  ClipboardList
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { base44 } from "@/api/base44Client";
@@ -57,6 +58,12 @@ export default function Layout({ children, currentPageName }) {
       title: "CRM Pipeline",
       url: createPageUrl("CRM"),
       icon: Users,
+      roles: ["owner", "manager"]
+    },
+    {
+      title: "Roofing Leads",
+      url: createPageUrl("RoofingLeadsDashboard"),
+      icon: ClipboardList,
       roles: ["owner", "manager"]
     },
     {
@@ -115,8 +122,9 @@ export default function Layout({ children, currentPageName }) {
     base44.auth.logout();
   };
 
-  // Show simple layout for home page and referral pages
-  if (isHomePage || isReferralPage || !user) {
+  // Show simple layout for home page, referral pages, and lead gen page
+  const isLeadGenPage = location.pathname.includes("LeadGenPage");
+  if (isHomePage || isReferralPage || isLeadGenPage || !user) {
     return (
       <div className="min-h-screen">
         {children}

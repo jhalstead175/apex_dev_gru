@@ -11,6 +11,8 @@ import AIAgents from './pages/AIAgents';
 import ReferralLandingPage from './pages/ReferralLandingPage';
 import ReferralPortal from './pages/ReferralPortal';
 import AdminReferralDashboard from './pages/AdminReferralDashboard';
+import LeadGenPage from './pages/LeadGenPage';
+import RoofingLeadsDashboard from './pages/RoofingLeadsDashboard';
 import Layout from './Layout.jsx';
 
 
@@ -28,6 +30,8 @@ export const PAGES = {
     "ReferralLandingPage": ReferralLandingPage,
     "ReferralPortal": ReferralPortal,
     "AdminReferralDashboard": AdminReferralDashboard,
+    "LeadGenPage": LeadGenPage,
+    "RoofingLeadsDashboard": RoofingLeadsDashboard,
 }
 
 export const pagesConfig = {
