@@ -115,8 +115,9 @@ export default function Layout({ children, currentPageName }) {
     base44.auth.logout();
   };
 
-  // Show simple layout for home page and referral pages
-  if (isHomePage || isReferralPage || !user) {
+  // Show simple layout for home page, referral pages, and lead gen page
+  const isLeadGenPage = location.pathname.includes("LeadGenPage");
+  if (isHomePage || isReferralPage || isLeadGenPage || !user) {
     return (
       <div className="min-h-screen">
         {children}
